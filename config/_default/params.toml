@@ -1,0 +1,95 @@
+# Meta Data for SEO
+
+## Homepage
+description = "This site is created by Sereinme and records photo diary, personal notes, knowledge hierarchy and other brainstorms."
+title = "Sereinme"
+titleAddition = "Personal Site of Thoughts"
+titleSeparator = "-"
+
+## Documentation
+# docsVersion = "0.3"
+
+## Open Graph
+domainTLD = "doks.netlify.app"
+images = ["doks.png"]
+ogLocale = "en_US"
+titleHome = "Doks Theme"
+
+## Twitter Cards
+twitterCreator = "@henkverlinde"
+twitterSite = "@getdoks"
+
+## JSON-LD
+# schemaType = "Person"
+schemaAuthor = "Henk Verlinde"
+schemaAuthorGitHub = "https://github.com/h-enk"
+schemaAuthorLinkedIn = "https://www.linkedin.com/in/henkverlinde/"
+schemaAuthorTwitter = "https://twitter.com/henkverlinde"
+schemaGitHub = "https://github.com/h-enk/doks"
+schemaImage = "doks.png"
+schemaImageHeight = 640
+schemaImageWidth = 1280
+schemaLinkedIn = ""
+schemaLocale = "en-US"
+schemaLogo = "logo-doks.png"
+schemaLogoHeight = 512
+schemaLogoWidth = 512
+schemaName = "Doks"
+schemaSection = "blog"
+schemaTwitter = "https://twitter.com/getdoks"
+schemaType = "Organization"
+
+## Sitelinks Search Box
+siteLinksSearchBox = true
+
+## Chrome Browser
+themeColor = "#fff"
+
+# Images
+bgColor = "#fff"
+landscapePhotoWidths = [900, 800, 700, 600, 500]
+lqipWidth = "20x"
+portraitPhotoWidths = [800, 700, 600, 500]
+quality = 85
+smallLimit = "300"
+
+# Footer
+footer = "Powered by <a class=\"text-muted\" href=\"https://www.netlify.com/\">Netlify</a>, <a class=\"text-muted\" href=\"https://gohugo.io/\">Hugo</a>, and <a class=\"text-muted\" href=\"https://getdoks.org/\">Doks</a>"
+
+# Feed
+copyRight = "Copyright (c) 2020-2022 Sereinme"
+
+# Alert
+alert = false
+alertDismissable = true
+# alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\" target=\"_blank\" rel=\"noopener\">Check out Doks v0.2</a>"
+alertText = "Introducing the Doks child theme, several DX + UX updates, and more! <a class=\"alert-link stretched-link\" href=\"https://getdoks.org/blog/doks-v0.2/\">Check out Doks v0.2</a>"
+
+# Edit Page
+# repoHost [Github | Gitea | GitLab | Bitbucket | BitbucketServer ] is used for building the edit link based on git hoster
+repoHost = "GitHub"
+#repoHost = "Gitea"
+docsRepo = "https://github.com/h-enk/doks"
+docsRepoBranch = "master"
+docsRepoSubPath = ""
+editPage = false
+lastMod = false
+
+[options]
+bootStrapJs = true
+breadCrumb = false
+clipBoard = true
+darkMode = true
+docsVersioning = false
+flexSearch = true
+fullWidth = false
+highLight = true
+instantPage = true
+kaTex = true
+lazySizes = true
+multilingualMode = false
+
+[menu]
+[menu.section]
+auto = true
+collapsibleSidebar = true
