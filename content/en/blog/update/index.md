@@ -6,7 +6,7 @@ date: 2022-03-05T19:44:49+08:00
 lastmod: 2022-03-05T19:44:49+08:00
 draft: false
 weight: 50
-images: ["update.jpg"]
+images: []
 contributors: ["Tech", "Git", "Sereinme"]
 ---
 
@@ -44,6 +44,8 @@ git push -u origin main
 ```
 
 ## Update
+
+![Image](small.gif "Update commands and layouts.")
 
 First thing to do is to build the local site. Make sure the directory is your site, like `my-doks-site`.
 
