@@ -38,4 +38,6 @@ Oops, the description does not show up. That's because the width of the image is
 
 ![Images](2.JPG "Bigger image uploaded")
 
-Other options see [Doks Add-Images](https://getdoks.org/tutorial/add-images/).
+* Other options see [Doks Add-Images](https://getdoks.org/tutorial/add-images/).
+
+* See also in [Gif Support For Doks Site 🛹]({{< relref "gif" >}}).
