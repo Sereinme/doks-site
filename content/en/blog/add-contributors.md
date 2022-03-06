@@ -7,7 +7,7 @@ lastmod: 2022-03-06T01:10:28+08:00
 draft: false
 weight: 50
 images: ["add-contributors.jpg"]
-contributors: ["Tech"]
+contributors: ["Tech", "Sereinme"]
 ---
 
 I have to say that although this blog is to record the description of contributors, I actually use this as my categories or tags page.

@@ -7,7 +7,7 @@ lastmod: 2022-03-05T19:44:49+08:00
 draft: false
 weight: 50
 images: ["update.jpg"]
-contributors: ["Tech", "Git"]
+contributors: ["Tech", "Git", "Sereinme"]
 ---
 
 ## First time deploy
