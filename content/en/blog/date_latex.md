@@ -7,7 +7,7 @@ lastmod: 2022-03-05T20:20:24+08:00
 draft: false
 weight: 50
 images: ["date_latex.jpg"]
-contributors: ["Tech", "Latex"]
+contributors: ["Tech", "Latex", "Sereinme"]
 ---
 
 ## Display date in English

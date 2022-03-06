@@ -17,7 +17,7 @@ When deploying the site for the first time, make sure you have a Github or other
 
 First need to initialize the static git repository. We should at the doks site folder.
 
-```shell
+```powershell
 cd my-doks-site
 npm run init
 ```
@@ -26,19 +26,19 @@ Here we clean the git repository before and create a new one.
 
 Then we get a remote of our online repository. We should replace the `<remote repository URL>` by our personal url.
 
-```shell
+```powershell
 git remote add origin <remote repository URL>
 ```
 
 We can check the remote status using following command.
 
-```shell
+```powershell
 git remote -v
 ```
 
 Finally, we commit all things down and push them online.
 
-```shell
+```powershell
 git add .
 git commit -m "First commit"
 git push -u origin main
@@ -50,13 +50,13 @@ git push -u origin main
 
 First thing to do is to build the local site. Make sure the directory is your site, like `my-doks-site`.
 
-```shell
+```powershell
 npm run build
 ```
 
 Then commit the changes and push files online.
 
-```shell
+```powershell
 git add .
 git commit -m "update"
 git push -u origin main

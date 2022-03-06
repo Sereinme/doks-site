@@ -7,7 +7,7 @@ lastmod: 2022-03-06T13:24:51+08:00
 draft: false
 weight: 50
 images: ["mermaid.jpg"]
-contributors: ["Tech"]
+contributors: ["Tech", "Doks", "Sereinme"]
 mermaid: true
 ---
 

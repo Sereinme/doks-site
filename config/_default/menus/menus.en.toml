@@ -57,6 +57,12 @@ parent = "get-started"
 url = "/docs/prologue/quick-start/"
 weight = 40
 
+[[main]]
+identifier = "contributors"
+name = "Contributors"
+url = "/contributors/"
+weight = 50
+
 # [[main]]
 #   name = "Tutorial"
 #   weight = 50

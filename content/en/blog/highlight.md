@@ -7,7 +7,7 @@ lastmod: 2022-03-06T13:06:44+08:00
 draft: false
 weight: 50
 images: ["highlight.jpg"]
-contributors: ["Tech", "Css", "Javascript"]
+contributors: ["Tech", "Css", "Javascript", "Sereinme"]
 ---
 
 ## Preparation

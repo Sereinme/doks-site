@@ -7,7 +7,7 @@ lastmod: 2022-03-06T21:08:23+08:00
 draft: false
 weight: 50
 images: ["gif.jpg"]
-contributors: ["Tech", "Doks"]
+contributors: ["Tech", "Doks", "Sereinme"]
 ---
 
 Adding gif to posts is the same as adding images. The steps can be fetched in [Add Images In Doks Posts 📎]({{< relref "img" >}}).

@@ -14,6 +14,7 @@ import verilog from 'highlight.js/lib/languages/verilog';
 import shell from 'highlight.js/lib/languages/shell';
 import asciidoc from 'highlight.js/lib/languages/asciidoc';
 import scss from 'highlight.js/lib/languages/scss';
+import powershell from 'highlight.js/lib/languages/powershell';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
@@ -30,6 +31,7 @@ hljs.registerLanguage('verilog', verilog);
 hljs.registerLanguage('shell', shell);
 hljs.registerLanguage('asciidoc', asciidoc);
 hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('powershell', powershell);
 
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('pre code:not(.language-mermaid)').forEach((block) => {

@@ -7,12 +7,12 @@ lastmod: 2022-03-06T20:24:33+08:00
 draft: false
 weight: 50
 images: ["img.jpg"]
-contributors: ["Tech", "Doks"]
+contributors: ["Tech", "Doks", "Sereinme"]
 ---
 
 It's quite confusing that if I add images directly with perlink in markdown file and run preview, I will get a error like this
 
-```shell
+```powershell
 ERROR 2022/03/06 19:13:27 Image not found
 If you feel that this should not be logged as an ERROR, you can ignore it by adding this to your site config:      
 ignoreErrors = ["image-not-found"]
@@ -20,7 +20,7 @@ ignoreErrors = ["image-not-found"]
 
 And I compare the existing posts and find out that only if I set the markdown file name `index.md` can I avoid this error. So the images and markdown file will at the same folder under the `blog` or other parent folders. We can create like this
 
-```shell
+```powershell
 npm run create blog/img/index.md
 ```
 

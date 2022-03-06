@@ -7,7 +7,7 @@ lastmod: 2022-03-06T00:43:28+08:00
 draft: false
 weight: 50
 images: ["change-title.jpg"]
-contributors: ["Tech"]
+contributors: ["Tech", "Doks", "Sereinme"]
 ---
 
 It is easy to change the title on the home page of Doks, just edit the `title` part in the `./config/_default/params.toml`, then it's obvious to check the change on the preview.
