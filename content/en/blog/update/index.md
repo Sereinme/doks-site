@@ -8,6 +8,7 @@ draft: false
 weight: 50
 images: []
 contributors: ["Tech", "Git", "Sereinme"]
+toc: true
 ---
 
 ## First time deploy
