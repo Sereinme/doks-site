@@ -9,11 +9,21 @@ images: []
 menu:
   docs:
     parent: "notes"
-weight: 999
+weight: 140
 toc: true
 ---
 
 [FFmpeg](http://ffmpeg.org/) is a complete, cross-platform solution to record, convert and stream audio and video. This is my FFmpeg learning notes. Using ffmpeg as video editor and converter. Change the fps and convert `.mp4` file to `.gif` and other formats.
+
+## Overview
+
+FFmpeg is short for "Fast Forward Moving Pictures Experts Group". It is a huge project and it provides 3 command line tools as follow
+
+* `ffmpeg`: video and audio converter.
+* `ffplay`: media player.
+* `ffprobe`: gathers information from multimedia streams.
+
+This note mainly review some of the usages of `ffmpeg`, which is most useful. The documentation of [`ffplay`](https://ffmpeg.org/ffplay.html) and [`ffprobe`](https://ffmpeg.org/ffprobe.html) is available in Internet and it's convenient to check.
 
 ## Install
 
@@ -68,13 +78,69 @@ ffmpeg -i <input file> -hide_banner
 
 ### Transcoding
 
+Transcoding means converting video files from one encoding to another, like from H.264 encoding to H.265, usually we use encoder `libx265`, so the command goes like
+
+```powershell
+ffmpeg -i <input file> -c:v libx265 <output file>
+```
+
+If you want to reverse from H.265 to H.264, just change the encoder to `libx264`.
+
 ### Transmuxing
+
+Transmuxing means transfer video files from one container to another. Notice that transfering container does not change encoding, so it's pretty fast. Here is an example from `.mp4` to `.webm`
+
+```powershell
+ffmpeg -i <input file>.mp4 -c copy <output file>.webm
+```
+
+In the command above, `-c copy` means copy directly, without transcoding.
 
 ### Transrating
 
+Transrating means adjusting bit rate, often used to reduce the size of a file. We can set the maximum rate, minimum rate and the buffer, like `3856K` for maximum rate, `964K` for minimum rate and `2000K` for buffer size. Command like
+
+```powershell
+ffmpeg \
+-i <input file> \
+-minrate <minimum rate> -maxrate <maximum rate> -bufsize <buffer> \
+<output file>
+```
+
 ### Transsizing
 
+Transsizing means changing video resolution[^2], also called scale[^3] Control.
+
+If the video is a high definition file, and we want to scale it down to reduce the size, then we can use the scale control commands.
+
+```powershell
+ffmpeg \
+-i <input file> \
+-vf scale=<width>:<height>:flags=lanczos \
+<output file>
+```
+
+`lanczos` is the algorithm of zoom, and if we want to set the width of the output file to half the width of the source video and the height to scale proportionally[^4], we will set the scale like this
+
+```powershell
+ffmpeg -i <input file> -vf scale=iw/2:-1 :flags=lanczos <output file>
+```
+
+The `iw` means video width, obviously `ih` means video height, and `-1` means zoom proportionally. And we can also set the pixels of width and height. If we wnat to get a 480p video, just set the width to 480.
+
+```powershell
+ffmpeg -i <input file> -vf scale=480:-1 <output file>
+```
+
 ### Demuxing
+
+Demuxing means extracting audio from video. It goes like this
+
+```powershell
+ffmpeg -i <input file>.mp4 -vn -c:a copy <output file>.aac
+```
+
+In the command above, `-vn` means removing video, `-c:a copy` indicates that the audio encoding is not changed, and is copied directly.
 
 ### Muxing
 
@@ -102,22 +168,6 @@ ffmpeg -i <input file> -loop <loop times> <output file>
 
 ### Compressing
 
-### Scale[^2] Control
-
-If the video is a high definition file, and we want to scale it down to reduce the size, then we can use the scale control commands.
-
-```powershell
-ffmpeg -i <input file> -vf scale=<width>:<height>:flags=lanczos <output file>
-```
-
-`lanczos` is the algorithm of zoom, and if we want to set the width of the output file to half the width of the source video and the height to scale proportionally[^3], we will set the scale like this
-
-```powershell
-ffmpeg -i <input file> -vf scale=iw/2:-1 :flags=lanczos <output file>
-```
-
-The `iw` means video width, obviously `ih` means video height, and `-1` means zoom proportionally. And we can also set the pixels of width and height.
-
 ### GIF
 
 It's direct to convert videos like `.mp4` files to `.gif` animations, just use commands below
@@ -133,5 +183,6 @@ ffmpeg -i <input>.mp4 <output>.gif
 * See official documentation [FFmpeg Documentation →](https://ffmpeg.org/ffmpeg.html).
 
 [^1]:_adi._ 冗余的;多余的
-[^2]:_n._ 规模;范围;程度;等级;级别; _vt._ 攀登;改变...的大小
-[^3]:_adv._ 按比例的.
+[^2]:_n._ 分辨率
+[^3]:_n._ 规模;范围;程度;等级;级别; _vt._ 攀登;改变...的大小
+[^4]:_adv._ 按比例的.
