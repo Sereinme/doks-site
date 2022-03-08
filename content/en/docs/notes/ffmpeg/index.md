@@ -144,6 +144,13 @@ In the command above, `-vn` means removing video, `-c:a copy` indicates that the
 
 ### Muxing
 
+```cpp
+int main()
+{
+  return 0;
+}
+```
+
 ### Screenshots
 
 ### Cutting
