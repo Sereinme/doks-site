@@ -22,11 +22,11 @@ name = "Lorem"
 url = "/guide/lorem/"
 weight = 10
 
-[[tutorial]]
-identifier = "lorem"
-name = "Lorem"
-url = "/tutorial/lorem/"
-weight = 10
+# [[tutorial]]
+# identifier = "lorem"
+# name = "Lorem"
+# url = "/tutorial/lorem/"
+# weight = 10
 
 [[main]]
 name = "Docs"
@@ -35,9 +35,9 @@ url = "/docs/prologue/introduction/"
 weight = 10
 
 # [[main]]
-#   name = "Tutorial"
-#   url = "/tutorial/lorem/ipsum/"
-#   weight = 15
+# name = "Notes"
+# url = "/Notes/introduction/"
+# weight = 15
 
 [[main]]
 name = "Blog"
@@ -83,7 +83,7 @@ weight = 10
 #   url = "https://twitter.com/getdoks"
 #   weight = 20
 
-# [[footer]]
-#   name = "Privacy"
-#   url = "/privacy-policy/"
-#   weight = 10
+[[footer]]
+name = "Privacy"
+url = "/privacy-policy/"
+weight = 10

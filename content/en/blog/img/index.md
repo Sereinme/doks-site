@@ -6,7 +6,9 @@ date: 2022-03-06T20:24:33+08:00
 lastmod: 2022-03-06T20:24:33+08:00
 draft: false
 weight: 50
-images: ["img.jpg"]
+images: []
+menu:
+  blog:
 contributors: ["Tech", "Doks", "Sereinme"]
 ---
 
