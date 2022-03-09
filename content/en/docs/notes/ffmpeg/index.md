@@ -15,6 +15,8 @@ toc: true
 
 [FFmpeg](http://ffmpeg.org/) is a complete, cross-platform solution to record, convert and stream audio and video. This is my FFmpeg learning notes. Using ffmpeg as video editor and converter. Change the fps and convert `.mp4` file to `.gif` and other formats.
 
+![gif](output.gif)
+
 ## Overview
 
 FFmpeg is short for "Fast Forward Moving Pictures Experts Group". It is a huge project and it provides 3 command line tools as follow

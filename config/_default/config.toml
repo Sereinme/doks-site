@@ -1,13 +1,14 @@
-baseurl = "https://sereinme.netlify.app/"
-canonifyURLs = false
-disableAliases = true
-disableHugoGeneratorInject = true
-enableEmoji = true
-enableGitInfo = false
-enableRobotsTXT = true
-languageCode = "en-US"
-paginate = 7
-rssLimit = 10
+baseurl = "https://sereinme.netlify.app/" 
+canonifyURLs = false 
+disableAliases = true 
+disableHugoGeneratorInject = true 
+enableEmoji = true 
+enableGitInfo = false 
+enableRobotsTXT = true 
+languageCode = "en-US" 
+paginate = 7 
+rssLimit = 10 
+timeout = 30000000 # ms
 
 # Multilingual
 defaultContentLanguage = "en"
