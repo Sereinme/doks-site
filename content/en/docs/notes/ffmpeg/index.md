@@ -101,10 +101,7 @@ In the command above, `-c copy` means copy directly, without transcoding.
 Transrating means adjusting bit rate, often used to reduce the size of a file. We can set the maximum rate, minimum rate and the buffer, like `3856K` for maximum rate, `964K` for minimum rate and `2000K` for buffer size. Command like
 
 ```powershell
-ffmpeg \
--i <input file> \
--minrate <minimum rate> -maxrate <maximum rate> -bufsize <buffer> \
-<output file>
+ffmpeg -i <input file> -minrate <minimum rate> -maxrate <maximum rate> -bufsize <buffer> <output file>
 ```
 
 ### Transsizing
@@ -114,10 +111,7 @@ Transsizing means changing video resolution[^2], also called scale[^3] Control.
 If the video is a high definition file, and we want to scale it down to reduce the size, then we can use the scale control commands.
 
 ```powershell
-ffmpeg \
--i <input file> \
--vf scale=<width>:<height>:flags=lanczos \
-<output file>
+ffmpeg -i <input file> -vf scale=<width>:<height>:flags=lanczos <output file>
 ```
 
 `lanczos` is the algorithm of zoom, and if we want to set the width of the output file to half the width of the source video and the height to scale proportionally[^4], we will set the scale like this
@@ -144,24 +138,40 @@ In the command above, `-vn` means removing video, `-c:a copy` indicates that the
 
 ### Muxing
 
-```cpp
-int main()
-{
-  return 0;
-}
+Muxing means adding external audio to the video, such as adding background music or narration[^5].
+
+```powershell
+ffmpeg -i <input file>.aac -i <input file>.mp4 <output file>.mp4
 ```
+
+There are 2 input files, one audi and one video, and `ffmpeg` combine them as one.
 
 ### Screenshots
 
-### Cutting
-
-Usually we only need a part of video, so we can cut it with start time and last time
+Screenshots need a start time and a last time, and it means from the start time, get sreenshots continuosly till last time ends.
 
 ```powershell
-ffmpeg -ss <start time> -t <last time> -i <input file> <output file>
+ffmpeg -y -i <input file> -ss <start time> -t <last time> <output file>_%3d.png
 ```
 
-Time unit is second, and we can also use format like `00:00:00.000`, which represents `hours:minutes:seconds.points`.
+And if you only need a frame of screenshot, it's also available
+
+```powershell
+ffmpeg -ss <cut time> -i <input file> -vframes 1 -q:v 2 <output>.png
+```
+
+In the above command, `-vframes 1` specifies that only one frame is to be captured, and `-q:v 2` indicates the output image quality, which is generally between `1` and `5` (`1` is the highest quality).
+
+### Cutting
+
+Usually we only need a part of video, so we can cut it with start time and last time or end time
+
+```powershell
+ffmpeg -ss <start time> -i <input file> -t <last time> -c copy <output file>
+ffmpeg -ss <start time> -i <input file> -to <end time> -c copy <output file>
+```
+
+Time unit is second, and we can also use format like `00:00:00.000`, which represents `hours:minutes:seconds.points`. `-c copy` means do not change the encoding format of audio and video, copy directly, which will be much faster.
 
 ### Loop
 
@@ -171,7 +181,19 @@ If we convert to `.gif` file or other animation pictures, we can set the loop ti
 ffmpeg -i <input file> -loop <loop times> <output file>
 ```
 
-### Adjusting Speed
+### Adjusting
+
+FFmpeg allows you to adjust video playback speed. To increase the video playback speed, just run
+
+```powershell
+ffmpeg -i <input file> -vf "setpts=0.5*PTS" <output file>
+```
+
+This command will double the speed of the video. To slow down your video you need to use a parameter greater than `1`, like
+
+```powershell
+ffmpeg -i <input file> -vf "setpts=4.0*PTS" <output file>
+```
 
 ### Compressing
 
@@ -183,13 +205,73 @@ It's direct to convert videos like `.mp4` files to `.gif` animations, just use c
 ffmpeg -i <input>.mp4 <output>.gif
 ```
 
+The default conversion is medium quality mode, to convert high quality gif, you can modify the bit rate
+
+```powershell
+ffmpeg -i <input>.mp4 -b 2048k <output>.gif
+ffmpeg -i <input>.mp4 -lossless 1 <output>.gif
+```
+
+We can also convert `.gif` file to other formats
+
+```powershell
+ffmpeg -f gif -i <input>.gif <output file>
+```
+
 ### WEBP
+
+The following command line can convert the file named input.mp4 into a lossless, loop played file named output.webp with size 800:600 and default persentation.
+
+```powershell
+ffmpeg -i <input>.mp4 -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 800:600 <output>.webp
+```
+
+If you want the exported output.webp animation to be played only once, it is lossy, the compression level is 3 (0-6, the default is 4, the higher the better the effect), the quality is 70 (0-100, the default is 75, the higher The better the effect), rendering[^6] as a picture.
+
+```powershell
+ffmpeg -i <input>.mp4 -vcodec libwebp -filter:v fps=fps=20 -lossless 0 -compression_level 3 -q:v 70 -loop 1 -preset picture -an -vsync 0 -s 800:600 <output>.webp
+```
+
+## Parameters
+
+There are some parameters.
+
+* Main parameters
+  * `-i`: Set the input filename.
+  * `-f`: Set the output format.
+  * `-y`: Overwrite the output file if it already exists.
+  * `-fs`: end conversion when the specified file size is exceeded.
+  * `-ss`: start conversion from the specified time.
+  * `-t`: converts from -ss time.
+  * `-title`: Set the title.
+  * `-timestamp`: Set the timestamp.
+  * `-vsync`: Increase or decrease Frame to synchronize video and audio.
+  * `-lossless`: Lossless quality, `1` for lossless, and `0` for loss by default.
+  * `-loop`: `0` by default means infinity, and `1` for once.
+* Video parameters
+  * `-b:v`: Set the video traffic, the default is 200Kbit/sec. (Please refer to the following precautions for the unit)
+  * `-r`: Set the frame rate value, the default is 25.
+  * `-s`: Set the width and height of the screen.
+  * `-aspect`: Set the aspect ratio of the screen.
+  * `-vn`: Don't process video, use when only processing sound.
+  * `-vcodec/-c:v`: Set the video codec, if not set, use the same codec as the input file.
+* Sound parameters
+  * `-b:a`: Set the traffic per channel (the latest SVN version is the sum of all channels). (Please refer to the following precautions for the unit)
+  * `-ar`: Set the sample rate.
+  * `-ac`: Set the number of channels for the sound.
+  * `-acodec/-c:a`: Set the sound codec, if not set the same as the video, use the same codec as the input file.
+  * `-an`: do not process sound, used when processing video only.
+  * `-vol`: set the volume, 256 is the standard volume. (To set it to double the volume, enter 512, and so on.)
 
 ## Reference
 
-* See official documentation [FFmpeg Documentation →](https://ffmpeg.org/ffmpeg.html).
+* See official documentation: [FFmpeg Documentation →](https://ffmpeg.org/).
+* [Using FFmpeg convert video to gif](https://www.jianshu.com/p/9af00bfe21b3).
+* [FFmpeg useful commands](https://www.cnblogs.com/brt2/p/14006745.html).
 
 [^1]:_adi._ 冗余的;多余的
 [^2]:_n._ 分辨率
 [^3]:_n._ 规模;范围;程度;等级;级别; _vt._ 攀登;改变...的大小
-[^4]:_adv._ 按比例的.
+[^4]:_adv._ 按比例的
+[^5]:_n._ 旁白
+[^6]:_v._ 渲染
